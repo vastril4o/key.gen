@@ -86,8 +86,29 @@
                 </ul>
                 <div class="alert alert-warning" ng-if="data.keys.length == 0"><i
                         class="fa fa-exclamation-triangle"></i>
-                    Oops, generate some keys please :(</div>
-                <div class="alert alert-info"><i class="fa fa-exclamation-circle"></i> This keys are private and only
+                    <strong>Oops,</strong> you have not generate anything.</div>
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Notifications</span>
+                </h4>
+                <div class="alert alert-success alert-dismissible fade show" role="alert" ng-if="data.keys.length > 0">
+                    <i class="fas fa-check-circle"></i>
+                    <strong>Great,</strong> you have generate your first key, take this cooke.<button type="button"
+                        class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button></div>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" ng-if="data.keys.length > 1">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Slow down,</strong> you will break mine
+                    algorithms!<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button></div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" ng-if="data.keys.length > 4"><i
+                        class="fas fa-coffee"></i>
+                    <strong>Ok, that's it,</strong> I am taking a break, you can generate only 100k more keys before
+                    break!<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button></div>
+                <div class="alert alert-info"><i class="fa fa-exclamation-circle"></i> This keys are
+                    <strong>private</strong> and only
                     visible to you, they will disapper when you leave the app.</div>
             </div>
         </div>
@@ -98,7 +119,7 @@
             <div class="row">
                 <div class="col-md-11">
                     <p>
-                        Handmade by 
+                        Handmade by
                         <a href="http://vastril4o.github.io">Wolfman | Vasil Valchev</a> &copy; 2020 -
                         <script>document.write(new Date().getFullYear())</script>
                         <br />

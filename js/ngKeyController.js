@@ -8,24 +8,34 @@ angular.module('keyGenApp', [])
     data.gens = [
       {
         title: 'PIN', name: 'pin', placeholder: 'xxxx',
-        size: [4, 8], size_selected: 0,
-        type: [{ title: 'Lowers', selected: false }, { title: 'Uppers', selected: false }, { title: 'Numbers', selected: true }]
+        size: [4], size_selected: 0,
+        type: [{ title: 'Lowers', selected: false }, { title: 'Uppers', selected: false }, { title: 'Numbers', selected: true }, { title: 'Symbols', selected: false }]
+      },
+      {
+        title: 'WEP', name: 'wep', placeholder: 'xxxxxxxxxx',
+        size: [10, 26, 58], size_selected: 0,
+        type: [{ title: 'Lowers', selected: false }, { title: 'Uppers', selected: true }, { title: 'Numbers', selected: true }, { title: 'Symbols', selected: false }]
+      },
+      {
+        title: 'WPA', name: 'wpa', placeholder: 'xxxxxxxxxx',
+        size: [10, 26, 58], size_selected: 0,
+        type: [{ title: 'Lowers', selected: true }, { title: 'Uppers', selected: true }, { title: 'Numbers', selected: true }, { title: 'Symbols', selected: true }]
       },
       {
         title: 'GUID / UUID', name: 'guid', placeholder: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
         size: [32], size_selected: 0,
-        type: [{ title: 'Lowers', selected: true }, { title: 'Uppers', selected: true }, { title: 'Numbers', selected: true }]
+        type: [{ title: 'Lowers', selected: true }, { title: 'Uppers', selected: true }, { title: 'Numbers', selected: true }, { title: 'Symbols', selected: false }]
       },
       {
         title: 'Windows CD', name: 'cd', placeholder: 'xxxxx-xxxxx-xxxxx-xxxxx-xxxxx',
         size: [25], size_selected: 0,
-        type: [{ title: 'Lowers', selected: false }, { title: 'Uppers', selected: true }, { title: 'Numbers', selected: true }]
+        type: [{ title: 'Lowers', selected: false }, { title: 'Uppers', selected: true }, { title: 'Numbers', selected: true }, { title: 'Symbols', selected: false }]
       }
     ];
 
     // function
     data.addKey = function (k, t) {
-      data.keys.push({ key: k, type: t });
+      data.keys.unshift({ key: k, type: t });
     };
 
     data.copyToClipboard = function (index) {
@@ -43,31 +53,34 @@ angular.module('keyGenApp', [])
       var template_1 = "abcdefghijklmnopqrstuvwxyz";
       var template_2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var template_3 = "0123456789";
+      var template_4 = "@#$&%!?*-+()";
 
       var template = "";
       for (var i = 0; i < data.gens[index].type.length; i++) {
-        if (i == 0 && data.gens[index].type[i].selected) {
-          template += template_1;
-        } else if (i == 1 && data.gens[index].type[i].selected) {
-          template += template_2;
-        } else if (i == 2 && data.gens[index].type[i].selected) {
-          template += template_3;
+        if (data.gens[index].type[i].selected) {
+          if (i == 0) {
+            template += template_1;
+          } else if (i == 1) {
+            template += template_2;
+          } else if (i == 2) {
+            template += template_3;
+          } else if (i == 3) {
+            template += template_4;
+          }
         }
       }
-
-      console.log(template);
 
       return template;
     };
 
     data.generate = function (index) {
       var key = '';
-      if (data.gens[index].name == 'pin') {
-        key = data.gen_pin(index);
-      } else if (data.gens[index].name == 'guid') {
+      if (data.gens[index].name == 'guid') {
         key = data.gen_guid(index);
       } else if (data.gens[index].name == 'cd') {
         key = data.gen_cd(index);
+      } else {
+        key = data.gen_pin(index);
       }
 
       document.getElementById('input_' + index).value = key;
