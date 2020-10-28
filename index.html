@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EED5PJ4YX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-0EED5PJ4YX');
+    </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -76,6 +85,18 @@
             </div>
             <div class="col-md-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Notifications</span>
+                </h4>
+                <div ng-repeat="a in data.alerts">
+                    <div class="alert alert-{{a.style}} alert-dismissible fade show" role="alert" ng-if="a.show">
+                        <i class="{{a.icon}}"></i>
+                        <strong>{{a.title}}</strong> {{a.text}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-if="a.close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Secret History</span>
                     <span class="badge badge-secondary badge-pill">{{data.keys.length}}</span>
                 </h4>
@@ -87,29 +108,6 @@
                 <div class="alert alert-warning" ng-if="data.keys.length == 0"><i
                         class="fa fa-exclamation-triangle"></i>
                     <strong>Oops,</strong> you have not generate anything.</div>
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Notifications</span>
-                </h4>
-                <div class="alert alert-success alert-dismissible fade show" role="alert" ng-if="data.keys.length > 0">
-                    <i class="fas fa-check-circle"></i>
-                    <strong>Great,</strong> you have generate your first key, take this cooke.<button type="button"
-                        class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button></div>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert" ng-if="data.keys.length > 1">
-                    <i class="fas fa-exclamation-triangle"></i> <strong>Slow down,</strong> you will break mine
-                    algorithms!<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button></div>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert" ng-if="data.keys.length > 4"><i
-                        class="fas fa-coffee"></i>
-                    <strong>Ok, that's it,</strong> I am taking a break, you can generate only 100k more keys before
-                    break!<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button></div>
-                <div class="alert alert-info"><i class="fa fa-exclamation-circle"></i> This keys are
-                    <strong>private</strong> and only
-                    visible to you, they will disapper when you leave the app.</div>
             </div>
         </div>
     </div>

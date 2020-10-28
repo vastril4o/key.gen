@@ -32,6 +32,24 @@ angular.module('keyGenApp', [])
         type: [{ title: 'Lowers', selected: false }, { title: 'Uppers', selected: true }, { title: 'Numbers', selected: true }, { title: 'Symbols', selected: false }]
       }
     ];
+    data.alerts = [
+      { 
+        title:"Great,", text: "you have generate your first key, take this cooke.", 
+        show: false, close: true, style: "success", icon: "fa fa-check-circle" 
+      },
+      { 
+        title:"Slow down,", text: "you will break mine algorithms!", 
+        show: false, close: true, style: "warning", icon: "fa fa-exclamation-triangle" 
+      },
+      { 
+        title:"Ok, that's it,", text: "I am taking a break, you can generate only 100k more keys before break!", 
+        show: false, close: true, style: "danger", icon: "fa fa-coffee" 
+      },
+      { 
+        title:"This keys are private", text: "and only visible to you, they will disapper when you leave the app.", 
+        show: true, close: false, style: "info", icon: "fa fa-exclamation-circle" 
+      }
+    ];
 
     // function
     data.addKey = function (k, t) {
@@ -85,6 +103,14 @@ angular.module('keyGenApp', [])
 
       document.getElementById('input_' + index).value = key;
       data.addKey(key, data.gens[index].title);
+
+      if (data.keys.length == 1) {
+        data.alerts[0].show = true;
+      } else if (data.keys.length == 2) {
+        data.alerts[1].show = true;
+      }  else if (data.keys.length == 3) {
+        data.alerts[2].show = true;
+      }
     };
 
     // generate
