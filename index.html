@@ -10,6 +10,7 @@
         gtag('js', new Date());
         gtag('config', 'G-0EED5PJ4YX');
     </script>
+    <!-- End Google Analytics -->
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,19 +30,20 @@
 
     <a id="home"></a>
     <div class="container pb-5">
+        <!--title-->
         <div class="py-5 text-center">
             <span class="fa-stack fa-3x">
                 <i class="fa fa-circle fa-stack-2x text-primary"></i>
                 <i class="fa fa-key fa-stack-1x text-light"></i>
             </span>
-
             <h2>KeyGen</h2>
-            <p><span class="badge badge-secondary badge-pill">version-1.0</span></p>
+            <p><span class="badge badge-secondary badge-pill">version-20201029</span></p>
             <p class="lead">Generate you key secret to protect your sensitive data.</p>
         </div>
 
         <div class="row">
             <div class="col-md-8">
+                <!--content-->
                 <h4 class="mb-3">Key Type</h4>
                 <div ng-repeat="g in data.gens">
                     <div class="card mb-3">
@@ -82,20 +84,26 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Notifications</span>
-                </h4>
-                <div ng-repeat="a in data.alerts">
-                    <div class="alert alert-{{a.style}} alert-dismissible fade show" role="alert" ng-if="a.show">
-                        <i class="{{a.icon}}"></i>
-                        <strong>{{a.title}}</strong> {{a.text}}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-if="a.close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                <!--feedback-->
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <p class="lead">Was this helpful?
+                            <a class="btn btn-outline-dark px-4 ml-4" onclick="fbCounterIncrease('like')">
+                                <i class="far fa-thumbs-up"></i> <span id="span_like">0</span></a>
+                            <a class="btn btn-outline-dark px-4 ml-2" onclick="fbCounterIncrease('dislike')">
+                                <i class="far fa-thumbs-down"></i> <span id="span_dislike">0</span></a>
+                        </p>
+                        <small>
+                            <a href="https://drive.google.com/open?id=1QAD2u2XmH69NIJEgtpN0Q2lIpidhMcxIMOIQ5U7M84o"
+                                target="_blank">
+                                <i class="far fa-lightbulb"></i> Give Feedback</a>
+                        </small>
                     </div>
                 </div>
+            </div>
+            <!--side column-->
+            <div class="col-md-4">
+                <!--history-->
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Secret History</span>
                     <span class="badge badge-secondary badge-pill">{{data.keys.length}}</span>
@@ -105,27 +113,25 @@
                         {{k.key}}<br /><small class="text-muted">{{k.type}}</small>
                     </li>
                 </ul>
-                <div class="alert alert-warning" ng-if="data.keys.length == 0"><i
-                        class="fa fa-exclamation-triangle"></i>
+                <div class="alert alert-danger" ng-if="data.keys.length == 0"><i class="fa fa-exclamation-triangle"></i>
                     <strong>Oops,</strong> you have not generate anything.</div>
+                <div class="alert alert-info alert-dismissible fade show" role="alert"><i
+                        class="fa fa-exclamation-circle"></i>
+                    <strong>This keys are private,</strong> they will disapper when you leave the app.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button></div>
             </div>
         </div>
     </div>
-
+    <!--footer-->
     <footer class="text-muted jumbotron jumbotron-fluid mb-0">
         <div class="container">
             <div class="row">
                 <div class="col-md-11">
                     <p>
-                        Handmade by
                         <a href="http://vastril4o.github.io">Wolfman | Vasil Valchev</a> &copy; 2020 -
                         <script>document.write(new Date().getFullYear())</script>
-                        <br />
-                        Send me your <a
-                            href="https://drive.google.com/open?id=1QAD2u2XmH69NIJEgtpN0Q2lIpidhMcxIMOIQ5U7M84o"
-                            target="_blank">
-                            <i class="far fa-lightbulb"></i> Feedback
-                        </a>
                     </p>
                 </div>
                 <div class="col-md-1">
@@ -137,7 +143,7 @@
         </div>
     </footer>
 
-    <!-- js -->
+    <!--js-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
@@ -147,9 +153,13 @@
         crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
 
     <script src="js/main.js"></script>
-    <script src="js/ngKeyController.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/ngMainController.js"></script>
 </body>
 
 </html>
