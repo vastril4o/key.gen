@@ -26,6 +26,9 @@ counterDislike.on("value", (snapshot) => {
 
 // update
 function fbCounterIncrease(type) {
+    document.getElementById("pFeedback").innerHTML = "Thanks for your feedback!";
+    document.getElementById("aLike").style.display = "none"
+    document.getElementById("aDislike").style.display = "none"
     if (type == 'like') {
         counterLike.transaction(val => val + 1, (err) => {
             if (err) {
