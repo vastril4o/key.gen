@@ -93,6 +93,8 @@
                             <a class="btn btn-outline-dark px-4 ml-2" onclick="fbCounterIncrease('dislike')">
                                 <i class="far fa-thumbs-down"></i> <span id="span_dislike">0</span></a>
                         </p>
+                    </div>
+                    <div class="card-footer">
                         <small>
                             <a href="https://drive.google.com/open?id=1QAD2u2XmH69NIJEgtpN0Q2lIpidhMcxIMOIQ5U7M84o"
                                 target="_blank">
@@ -115,12 +117,10 @@
                 </ul>
                 <div class="alert alert-danger" ng-if="data.keys.length == 0"><i class="fa fa-exclamation-triangle"></i>
                     <strong>Oops,</strong> you have not generate anything.</div>
-                <div class="alert alert-info alert-dismissible fade show" role="alert"><i
+                <div class="alert alert-info" role="alert"><i
                         class="fa fa-exclamation-circle"></i>
                     <strong>This keys are private,</strong> they will disapper when you leave the app.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button></div>
+                </div>
             </div>
         </div>
     </div>
