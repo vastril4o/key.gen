@@ -26,13 +26,13 @@
     <link href="css/main.css" rel="stylesheet">
 </head>
 
-<body ng-class="dark?'bg-secondary text-light':'bg-light text-dark'" ng-app="keyGenApp"
-    ng-controller="ngKeyController as data">
+<body ng-class="data.theme_dark?'bg-secondary text-light':'bg-light text-dark'" ng-app="mainApp"
+    ng-controller="mainController as data">
     <a id="home"></a>
     <div class="container pb-5">
         <!--title-->
         <div class="custom-control custom-switch text-right pt-3">
-            <input type="checkbox" class="custom-control-input" id="darkModeSwitch1" ng-model="dark">
+            <input type="checkbox" class="custom-control-input" id="darkModeSwitch1" ng-model="data.theme_dark">
             <label class="custom-control-label" for="darkModeSwitch1">Dark Mode</label>
         </div>
         <div class="py-5 text-center">
@@ -41,7 +41,7 @@
                 <i class="fa fa-key fa-stack-1x text-light"></i>
             </span>
             <h2>KeyGen</h2>
-            <p><span class="badge" ng-class="dark?'badge-light':'badge-dark'">v-1.201103</span></p>
+            <p><span class="badge" ng-class="data.theme_dark?'badge-light':'badge-dark'">v-1.201103</span></p>
             <p class="lead">Generate your key to protect your sensitive data<br />(random, secret, API, private)</p>
         </div>
 
@@ -50,7 +50,7 @@
                 <!--content-->
                 <h4 class="mb-3">Key Type</h4>
                 <div ng-repeat="g in data.gens">
-                    <div class="card mb-3" ng-class="dark?'bg-dark text-light':'bg-white text-dark'">
+                    <div class="card mb-3" ng-class="data.theme_dark?'bg-dark text-light':'bg-white text-dark'">
                         <div class="card-header">{{g.title}}</div>
                         <div class="card-body">
                             <div class="input-group mb-3">
@@ -89,13 +89,13 @@
                     </div>
                 </div>
                 <!--feedback-->
-                <div class="card mt-5" ng-class="dark?'bg-dark text-light':'bg-white text-dark'">
+                <div class="card mt-5" ng-class="data.theme_dark?'bg-dark text-light':'bg-white text-dark'">
                     <div class="card-body">
                         <p id="pFeedback" class="lead">Was this helpful?
-                            <a class="btn px-4 ml-4" ng-class="dark?'btn-outline-light':'btn-outline-dark'"
+                            <a class="btn px-4 ml-4" ng-class="data.theme_dark?'btn-outline-light':'btn-outline-dark'"
                                 onclick="fbCounterIncrease('like')">
                                 <i class="far fa-thumbs-up"></i> <span id="span_like">0</span></a>
-                            <a class="btn px-4 ml-2" ng-class="dark?'btn-outline-light':'btn-outline-dark'"
+                            <a class="btn px-4 ml-2" ng-class="data.theme_dark?'btn-outline-light':'btn-outline-dark'"
                                 onclick="fbCounterIncrease('dislike')">
                                 <i class="far fa-thumbs-down"></i> <span id="span_dislike">0</span></a>
                         </p>
@@ -113,10 +113,10 @@
             <div class="col-md-4">
                 <!--history-->
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    History<span class="badge" ng-class="dark?'badge-light':'badge-dark'">{{data.keys.length}}</span>
+                    History<span class="badge" ng-class="data.theme_dark?'badge-light':'badge-dark'">{{data.keys.length}}</span>
                 </h4>
                 <ul class="list-group mb-3" ng-if="data.keys.length > 0">
-                    <li class="list-group-item" ng-class="dark?'bg-dark text-light':'bg-white text-dark'"
+                    <li class="list-group-item" ng-class="data.theme_dark?'bg-dark text-light':'bg-white text-dark'"
                         ng-repeat="k in data.keys">
                         {{k.key}}<br /><small class="text-muted">{{k.type}}</small>
                     </li>
@@ -131,7 +131,7 @@
         </div>
     </div>
     <!--footer-->
-    <footer class="jumbotron jumbotron-fluid mb-0" ng-class="dark?'bg-dark text-light':'text-dark'">
+    <footer class="jumbotron jumbotron-fluid mb-0" ng-class="data.theme_dark?'bg-dark text-light':'text-dark'">
         <div class="container">
             <div class="row">
                 <div class="col-md-11">
@@ -141,13 +141,13 @@
                     </p>
                     <p>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="darkModeSwitch2" ng-model="dark">
+                        <input type="checkbox" class="custom-control-input" id="darkModeSwitch2" ng-model="data.theme_dark">
                         <label class="custom-control-label" for="darkModeSwitch2">Dark Mode</label>
                     </div>
                     </p>
                 </div>
                 <div class="col-md-1">
-                    <a href="#home" class="text-dark" ng-class="dark?'text-light':'text-dark'">
+                    <a href="#home" class="text-dark" ng-class="data.theme_dark?'text-light':'text-dark'">
                         <i class="far fa-arrow-alt-circle-up fa-2x"></i>
                     </a>
                 </div>
@@ -171,7 +171,7 @@
 
     <script src="js/main.js"></script>
     <script src="js/firebase.js"></script>
-    <script src="js/ngMainController.js"></script>
+    <script src="js/mainController.js"></script>
 </body>
 
 </html>
