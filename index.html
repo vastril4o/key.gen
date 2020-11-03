@@ -31,13 +31,10 @@
     <a id="home"></a>
     <div class="container pb-5">
         <!--title-->
-        <p class="py-3 text-right">
-            <label>
-                <input type="checkbox" ng-model="dark" hidden>Theme
-                <i ng-if="dark" class="fa fa-sun"></i>
-                <i ng-if="!dark" class="fa fa-moon"></i>
-            </label>
-        </p>
+        <div class="custom-control custom-switch text-right pt-3">
+            <input type="checkbox" class="custom-control-input" id="darkModeSwitch1" ng-model="dark">
+            <label class="custom-control-label" for="darkModeSwitch1">Dark Mode</label>
+        </div>
         <div class="py-5 text-center">
             <span class="fa-stack fa-3x">
                 <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -45,7 +42,7 @@
             </span>
             <h2>KeyGen</h2>
             <p><span class="badge" ng-class="dark?'badge-light':'badge-dark'">v-1.201103</span></p>
-            <p class="lead">Generate your key to protect your sensitive data<br/>(random, secret, API, private)</p>
+            <p class="lead">Generate your key to protect your sensitive data<br />(random, secret, API, private)</p>
         </div>
 
         <div class="row">
@@ -143,11 +140,10 @@
                         <script>document.write(new Date().getFullYear())</script>
                     </p>
                     <p>
-                        <label>
-                            <input type="checkbox" ng-model="dark" hidden>Theme
-                            <i ng-if="dark" class="fa fa-sun"></i>
-                            <i ng-if="!dark" class="fa fa-moon"></i>
-                        </label>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="darkModeSwitch2" ng-model="dark">
+                        <label class="custom-control-label" for="darkModeSwitch2">Dark Mode</label>
+                    </div>
                     </p>
                 </div>
                 <div class="col-md-1">
