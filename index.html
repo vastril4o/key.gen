@@ -31,6 +31,13 @@
     <a id="home"></a>
     <div class="container pb-5">
         <!--title-->
+        <p class="py-3 text-right">
+            <label>
+                <input type="checkbox" ng-model="dark" hidden>Theme
+                <i ng-if="dark" class="fa fa-sun"></i>
+                <i ng-if="!dark" class="fa fa-moon"></i>
+            </label>
+        </p>
         <div class="py-5 text-center">
             <span class="fa-stack fa-3x">
                 <i class="fa fa-circle fa-stack-2x text-primary"></i>
@@ -38,12 +45,7 @@
             </span>
             <h2>KeyGen</h2>
             <p><span class="badge" ng-class="dark?'badge-light':'badge-dark'">v-1.201103</span></p>
-            <p class="lead">Generate you key (random, secret, API, private) to protect your sensitive data.</p>
-            <label>
-                <input type="checkbox" ng-model="dark" hidden>Theme
-                <i ng-if="dark" class="fa fa-sun"></i>
-                <i ng-if="!dark" class="fa fa-moon"></i>
-            </label>
+            <p class="lead">Generate your key to protect your sensitive data<br/>(random, secret, API, private)</p>
         </div>
 
         <div class="row">
@@ -90,7 +92,7 @@
                     </div>
                 </div>
                 <!--feedback-->
-                <div class="card mt-5" ng-class="dark?'bg-dark text-light':'bg-light text-dark'">
+                <div class="card mt-5" ng-class="dark?'bg-dark text-light':'bg-white text-dark'">
                     <div class="card-body">
                         <p id="pFeedback" class="lead">Was this helpful?
                             <a class="btn px-4 ml-4" ng-class="dark?'btn-outline-light':'btn-outline-dark'"
