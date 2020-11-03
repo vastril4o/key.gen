@@ -40,7 +40,7 @@
             <p><span class="badge" ng-class="dark?'badge-light':'badge-dark'">v-1.201103</span></p>
             <p class="lead">Generate you key (random, secret, API, private) to protect your sensitive data.</p>
             <label>
-                <input type="checkbox" ng-model="dark" hidden>Theme 
+                <input type="checkbox" ng-model="dark" hidden>Theme
                 <i ng-if="dark" class="fa fa-sun"></i>
                 <i ng-if="!dark" class="fa fa-moon"></i>
             </label>
@@ -56,14 +56,14 @@
                         <div class="card-body">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-primary" type="button"
-                                        ng-click="data.generate($index)">Generate</button>
+                                    <button class="btn btn-secondary" type="button"
+                                        ng-click="data.copyToClipboard($index)"><i class="fa fa-clipboard"></i></button>
                                 </div>
                                 <input type="text" class="form-control" id="input_{{$index}}"
                                     placeholder="{{g.placeholder}}">
                                 <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="button"
-                                        ng-click="data.copyToClipboard($index)"><i class="fa fa-clipboard"></i></button>
+                                    <button class="btn btn-primary" type="button"
+                                        ng-click="data.generate($index)">Generate</button>
                                 </div>
                             </div>
                             <div class="row">
@@ -93,12 +93,10 @@
                 <div class="card mt-5" ng-class="dark?'bg-dark text-light':'bg-light text-dark'">
                     <div class="card-body">
                         <p id="pFeedback" class="lead">Was this helpful?
-                            <a class="btn px-4 ml-4"
-                                ng-class="dark?'btn-outline-light':'btn-outline-dark'"
+                            <a class="btn px-4 ml-4" ng-class="dark?'btn-outline-light':'btn-outline-dark'"
                                 onclick="fbCounterIncrease('like')">
                                 <i class="far fa-thumbs-up"></i> <span id="span_like">0</span></a>
-                            <a class="btn px-4 ml-2"
-                                ng-class="dark?'btn-outline-light':'btn-outline-dark'"
+                            <a class="btn px-4 ml-2" ng-class="dark?'btn-outline-light':'btn-outline-dark'"
                                 onclick="fbCounterIncrease('dislike')">
                                 <i class="far fa-thumbs-down"></i> <span id="span_dislike">0</span></a>
                         </p>
@@ -119,7 +117,8 @@
                     History<span class="badge" ng-class="dark?'badge-light':'badge-dark'">{{data.keys.length}}</span>
                 </h4>
                 <ul class="list-group mb-3" ng-if="data.keys.length > 0">
-                    <li class="list-group-item" ng-class="dark?'bg-dark text-light':'bg-white text-dark'" ng-repeat="k in data.keys">
+                    <li class="list-group-item" ng-class="dark?'bg-dark text-light':'bg-white text-dark'"
+                        ng-repeat="k in data.keys">
                         {{k.key}}<br /><small class="text-muted">{{k.type}}</small>
                     </li>
                 </ul>
