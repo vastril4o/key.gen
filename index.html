@@ -14,7 +14,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="api key, private key, secret key, random key generator">
     <meta name="author" content="Vasil Valchev">
     <link rel="icon" href="">
 
@@ -26,8 +26,8 @@
     <link href="css/main.css" rel="stylesheet">
 </head>
 
-<body class="bg-light" ng-app="keyGenApp" ng-controller="ngKeyController as data">
-
+<body ng-class="dark?'bg-secondary text-light':'bg-light text-dark'" ng-app="keyGenApp"
+    ng-controller="ngKeyController as data">
     <a id="home"></a>
     <div class="container pb-5">
         <!--title-->
@@ -37,8 +37,13 @@
                 <i class="fa fa-key fa-stack-1x text-light"></i>
             </span>
             <h2>KeyGen</h2>
-            <p><span class="badge badge-secondary badge-pill">version-20201029</span></p>
-            <p class="lead">Generate you key secret to protect your sensitive data.</p>
+            <p><span class="badge" ng-class="dark?'badge-light':'badge-dark'">v-1.201103</span></p>
+            <p class="lead">Generate you key (random, secret, API, private) to protect your sensitive data.</p>
+            <label>
+                <input type="checkbox" ng-model="dark" hidden>Theme 
+                <i ng-if="dark" class="fa fa-sun"></i>
+                <i ng-if="!dark" class="fa fa-moon"></i>
+            </label>
         </div>
 
         <div class="row">
@@ -46,7 +51,7 @@
                 <!--content-->
                 <h4 class="mb-3">Key Type</h4>
                 <div ng-repeat="g in data.gens">
-                    <div class="card mb-3">
+                    <div class="card mb-3" ng-class="dark?'bg-dark text-light':'bg-white text-dark'">
                         <div class="card-header">{{g.title}}</div>
                         <div class="card-body">
                             <div class="input-group mb-3">
@@ -85,12 +90,16 @@
                     </div>
                 </div>
                 <!--feedback-->
-                <div class="card mt-5">
+                <div class="card mt-5" ng-class="dark?'bg-dark text-light':'bg-light text-dark'">
                     <div class="card-body">
                         <p id="pFeedback" class="lead">Was this helpful?
-                            <a class="btn btn-outline-dark px-4 ml-4" onclick="fbCounterIncrease('like')">
+                            <a class="btn px-4 ml-4"
+                                ng-class="dark?'btn-outline-light':'btn-outline-dark'"
+                                onclick="fbCounterIncrease('like')">
                                 <i class="far fa-thumbs-up"></i> <span id="span_like">0</span></a>
-                            <a class="btn btn-outline-dark px-4 ml-2" onclick="fbCounterIncrease('dislike')">
+                            <a class="btn px-4 ml-2"
+                                ng-class="dark?'btn-outline-light':'btn-outline-dark'"
+                                onclick="fbCounterIncrease('dislike')">
                                 <i class="far fa-thumbs-down"></i> <span id="span_dislike">0</span></a>
                         </p>
                     </div>
@@ -107,35 +116,41 @@
             <div class="col-md-4">
                 <!--history-->
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Secret History</span>
-                    <span class="badge badge-secondary badge-pill">{{data.keys.length}}</span>
+                    History<span class="badge" ng-class="dark?'badge-light':'badge-dark'">{{data.keys.length}}</span>
                 </h4>
                 <ul class="list-group mb-3" ng-if="data.keys.length > 0">
-                    <li class="list-group-item" ng-repeat="k in data.keys">
+                    <li class="list-group-item" ng-class="dark?'bg-dark text-light':'bg-white text-dark'" ng-repeat="k in data.keys">
                         {{k.key}}<br /><small class="text-muted">{{k.type}}</small>
                     </li>
                 </ul>
-                <div class="alert alert-danger" ng-if="data.keys.length == 0"><i class="fa fa-exclamation-triangle"></i>
+                <div class="alert alert-warning" ng-if="data.keys.length == 0"><i
+                        class="fa fa-exclamation-triangle"></i>
                     <strong>Oops,</strong> you have not generate anything.</div>
-                <div class="alert alert-info" role="alert"><i
-                        class="fa fa-exclamation-circle"></i>
+                <div class="alert alert-info" role="alert"><i class="fa fa-exclamation-circle"></i>
                     <strong>This keys are private,</strong> they will disapper when you leave the app.
                 </div>
             </div>
         </div>
     </div>
     <!--footer-->
-    <footer class="text-muted jumbotron jumbotron-fluid mb-0">
+    <footer class="jumbotron jumbotron-fluid mb-0" ng-class="dark?'bg-dark text-light':'text-dark'">
         <div class="container">
             <div class="row">
                 <div class="col-md-11">
                     <p>
-                        <a href="http://vastril4o.github.io">Wolfman | Vasil Valchev</a> &copy; 2020 -
+                        <a href="http://vastril4o.github.io">Vasil Valchev</a> &copy; 2020 -
                         <script>document.write(new Date().getFullYear())</script>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" ng-model="dark" hidden>Theme
+                            <i ng-if="dark" class="fa fa-sun"></i>
+                            <i ng-if="!dark" class="fa fa-moon"></i>
+                        </label>
                     </p>
                 </div>
                 <div class="col-md-1">
-                    <a href="#home" class="text-dark">
+                    <a href="#home" class="text-dark" ng-class="dark?'text-light':'text-dark'">
                         <i class="far fa-arrow-alt-circle-up fa-2x"></i>
                     </a>
                 </div>
