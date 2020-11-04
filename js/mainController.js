@@ -42,7 +42,7 @@ angular.module('mainApp', [])
 
     function afterNight() {
       var d = new Date();
-      if (d.getHours() > 20 && d.getHours() < 8) {
+      if (d.getHours() > 20 || d.getHours() < 8) {
         return true;
       }
     };
